@@ -62,6 +62,8 @@ jupyter labextension develop --overwrite .
 yarn run build
 ```
 
+Then start Jupyter Lab (`jupyter lab`) and open `introduction.ipynb`.
+
 For classic notebook, you can run:
 
 ```
