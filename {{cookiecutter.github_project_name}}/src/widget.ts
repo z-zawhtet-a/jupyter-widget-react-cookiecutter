@@ -6,11 +6,20 @@ import {
   DOMWidgetView,
   ISerializers,
 } from '@jupyter-widgets/base';
+import ReactWidget from "./ReactWidget"
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 import { MODULE_NAME, MODULE_VERSION } from './version';
 
 // Import the CSS
 import '../css/widget.css';
+
+const defaultModelProperties = {
+  value: 'Hello World',
+}
+
+export type WidgetProperty = keyof typeof defaultModelProperties
 
 export class ExampleModel extends DOMWidgetModel {
   defaults() {
@@ -22,7 +31,7 @@ export class ExampleModel extends DOMWidgetModel {
       _view_name: ExampleModel.view_name,
       _view_module: ExampleModel.view_module,
       _view_module_version: ExampleModel.view_module_version,
-      value: 'Hello World',
+      ...defaultModelProperties
     };
   }
 
@@ -43,11 +52,9 @@ export class ExampleView extends DOMWidgetView {
   render() {
     this.el.classList.add('custom-widget');
 
-    this.value_changed();
-    this.model.on('change:value', this.value_changed, this);
-  }
-
-  value_changed() {
-    this.el.textContent = this.model.get('value');
+    const component = React.createElement(ReactWidget, {
+      model: this.model,
+    });
+    ReactDOM.render(component, this.el);
   }
 }
