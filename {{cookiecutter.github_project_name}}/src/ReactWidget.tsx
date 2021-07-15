@@ -12,6 +12,12 @@ function ReactWidget(props: WidgetProps) {
     <div className="Widget">
       <h1>Hello World {name}</h1>
       <input
+        style={{
+          padding: '7px',
+          background: 'whitesmoke',
+          border: '1px solid gray',
+          borderRadius: '4px',
+        }}
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
