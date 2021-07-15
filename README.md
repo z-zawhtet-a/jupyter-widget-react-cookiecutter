@@ -62,8 +62,6 @@ jupyter labextension develop --overwrite .
 yarn run build
 ```
 
-Then start Jupyter Lab (`jupyter lab`) and open `introduction.ipynb`.
-
 For classic notebook, you can run:
 
 ```
@@ -95,6 +93,10 @@ After a change wait for the build to finish and then refresh your browser and th
 #### Python:
 
 If you make a change to the python code then you will need to restart the notebook kernel to have it take effect.
+
+#### Playground
+
+Open the [`introduction.ipynb`](https://github.com/Waidhoferj/jupyter-widget-react-cookiecutter/blob/master/%7B%7Bcookiecutter.github_project_name%7D%7D/examples/introduction.ipynb) notebook to begin developing your widget in the browser.
 
 ## Hooks
 
