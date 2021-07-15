@@ -21,7 +21,7 @@ const defaultModelProperties = {
   value: 'Hello World',
 }
 
-export type WidgetProperty = keyof typeof defaultModelProperties
+export type WidgetModelState = typeof defaultModelProperties
 
 export class ExampleModel extends DOMWidgetModel {
   defaults() {

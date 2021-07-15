@@ -7,7 +7,7 @@ interface WidgetProps {
 }
 
 function ReactWidget(props: WidgetProps) {
-  const [name, setName] = useModelState<string>('value');
+  const [name, setName] = useModelState('value');
   return (
     <div className="Widget">
       <h1>Hello World {name}</h1>
