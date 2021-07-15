@@ -1,16 +1,15 @@
-# widget-ts-cookiecutter
-
-![Github Actions Status](https://github.com/jupyter-widgets/widget-ts-cookiecutter/workflows/Build/badge.svg)
+# jupyter-widget-react-cookiecutter
 
 A [cookiecutter](https://github.com/cookiecutter/cookiecutter) template for a custom
-Jupyter widget project.
+Jupyter widget project in React.
 
-## What is widget-ts-cookiecutter?
+## What is jupyter-widget-react-cookiecutter?
 
-With **widget-ts-cookiecutter** you can create a custom Jupyter interactive
-widget project with sensible defaults. widget-ts-cookiecutter helps custom widget
+With **jupyter-widget-react-cookiecutter** you can create a custom Jupyter interactive
+widget project with sensible defaults using React. jupyter-widget-react-cookiecutter helps custom widget
 authors get started with best practices for the packaging and distribution
-of a custom Jupyter interactive widget library.
+of a custom Jupyter interactive widget library. This repository is based on [widget-ts-cookiecutter](https://github.com/jupyter-widgets/widget-ts-cookiecutter.git)
+with the addition of React integration out of the box and a few useful state management hooks.
 
 ## Usage
 
@@ -18,11 +17,11 @@ Install [cookiecutter](https://github.com/audreyr/cookiecutter):
 
     pip install cookiecutter
 
-After installing cookiecutter, use widget-ts-cookiecutter:
+After installing cookiecutter, use jupyter-widget-react-cookiecutter:
 
-    cookiecutter https://github.com/jupyter-widgets/widget-ts-cookiecutter.git
+    cookiecutter https://github.com/jupyter-widgets/jupyter-widget-react-cookiecutter.git
 
-As widget-ts-cookiecutter runs, you will be asked for basic information about
+As jupyter-widget-react-cookiecutter runs, you will be asked for basic information about
 your custom Jupyter widget project. You will be prompted for the following
 information:
 
@@ -42,6 +41,7 @@ custom Jupyter widget. To check that eveything is set up as it should be,
 you should run the tests:
 
 Create a dev environment:
+
 ```bash
 conda create -n {{ cookiecutter.python_package_name }}-dev -c conda-forge nodejs yarn python jupyterlab
 conda activate {{ cookiecutter.python_package_name }}-dev
@@ -52,12 +52,6 @@ Install the python. This will also build the TS package.
 ```bash
 # First install the python package. This will also build the JS packages.
 pip install -e ".[test, examples]"
-
-# Run the python tests. This should not give you a few sucessful example tests
-py.test
-
-# Run the JS tests. This should again, only give TODO errors (Expected 'Value' to equal 'Expected value'):
-yarn test
 ```
 
 When developing your extensions, you need to manually enable your extensions with the
@@ -80,9 +74,10 @@ the `install` command every time that you rebuild your extension. For certain in
 you might also need another flag instead of `--sys-prefix`, but we won't cover the meaning
 of those flags here.
 
-
 ### How to see your changes
+
 #### Typescript:
+
 If you use JupyterLab to develop then you can watch the source directory and run JupyterLab at the same time in different
 terminals to watch for changes in the extension's source and automatically rebuild the widget.
 
@@ -96,7 +91,16 @@ jupyter lab
 After a change wait for the build to finish and then refresh your browser and the changes should take effect.
 
 #### Python:
+
 If you make a change to the python code then you will need to restart the notebook kernel to have it take effect.
+
+## Hooks
+
+A few helpful hooks are provided in [`widget-model.ts`](https://github.com/Waidhoferj/jupyter-widget-react-cookiecutter/blob/master/%7B%7Bcookiecutter.github_project_name%7D%7D/src/hooks/widget-model.ts) to sync the state of your React app with the Jupyter Widget model:
+
+- `useModelState` works like the `useState` hook but accepts the name of a Jupyter Widget model property as a string. Setting the state updates the Jupyter Widget model alongside the React state. Most likely this will be the only hook you will ever need from this module.
+- `useModelEvent` works like the `useEffect` hook but accepts the name of a Backbone event as its first argument. If you want watch for a Jupyter Widget property change, the event to listen for would be `change:<property-name>`.
+- `useModel` is an escape hatch that gives you full access to the Jupyter `WidgetModel`.
 
 ## Releasing your initial packages:
 

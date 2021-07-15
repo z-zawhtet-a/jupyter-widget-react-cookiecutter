@@ -15,6 +15,8 @@ import { MODULE_NAME, MODULE_VERSION } from './version';
 // Import the CSS
 import '../css/widget.css';
 
+// Your widget state goes here. Make sure to update the corresponding
+// Python state in example.py
 const defaultModelProperties = {
   value: 'Hello World',
 }
