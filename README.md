@@ -19,7 +19,7 @@ Install [cookiecutter](https://github.com/audreyr/cookiecutter):
 
 After installing cookiecutter, use jupyter-widget-react-cookiecutter:
 
-    cookiecutter https://github.com/jupyter-widgets/jupyter-widget-react-cookiecutter.git
+    cookiecutter https://github.com/Waidhoferj/jupyter-widget-react-cookiecutter.git
 
 As jupyter-widget-react-cookiecutter runs, you will be asked for basic information about
 your custom Jupyter widget project. You will be prompted for the following
