@@ -17,7 +17,7 @@ function ReactWidget(props: WidgetProps) {
 
   return (
     <div className="Widget">
-      <h1>Hello World {name}</h1>
+      <h1>Hello {name}</h1>
       <input
         style={inputStyle}
         type="text"
