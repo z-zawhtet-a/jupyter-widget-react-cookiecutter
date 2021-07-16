@@ -8,16 +8,18 @@ interface WidgetProps {
 
 function ReactWidget(props: WidgetProps) {
   const [name, setName] = useModelState('value');
+  const inputStyle = {
+    padding: '7px',
+    background: 'whitesmoke',
+    border: '1px solid gray',
+    borderRadius: '4px',
+  }
+
   return (
     <div className="Widget">
       <h1>Hello World {name}</h1>
       <input
-        style={{
-          padding: '7px',
-          background: 'whitesmoke',
-          border: '1px solid gray',
-          borderRadius: '4px',
-        }}
+        style={inputStyle}
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
