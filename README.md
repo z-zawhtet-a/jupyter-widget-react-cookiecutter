@@ -117,11 +117,15 @@ A few helpful hooks are provided in [`widget-model.ts`](https://github.com/Waidh
   npm login
   npm publish
   ```
-- Bundle the python package: `python setup.py sdist bdist_wheel`
-- Publish the package to PyPI:
+- Install publish dependencies:
+```bash
+pip install build twine
+```
+- Build the assets and publish
   ```bash
-  pip install twine
-  twine upload dist/<python package name>*
+  python -m build .
+  twine check dist/*
+  twine upload dist/*
   ```
 - Tag the release commit (`git tag <python package version identifier>`)
 - Update the version in `_version.py`, and put it back to dev (e.g. 0.1.0 -> 0.2.0.dev).
